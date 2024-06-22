@@ -1,0 +1,13 @@
+{
+  "name": "three-raytracing-renderer",
+  "version": "1.0.0",
+  "description": "headless, pure js raytracing renderer drop in for three.js",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "devDependencies": {
+    "three": "^0.165.0"
+  },
+  "scripts": { "test": "node ./test.js" },
+  "homepage": "https://github.com/zz85/three-raytracing-renderer#readme"
+}
