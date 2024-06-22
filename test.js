@@ -41,22 +41,46 @@ function render() {
     return rendered;
 }
 
-let rendered = render();
-
-let output = [];
+import fs from 'fs'
+let ref = fs.readFileSync('./node_modules/three/build/three.module.min.js', { encoding: 'utf-8' })
+    // .replace(/\n/g, ' ');
 let i = 0;
+let slowi = 0;
 
-for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-        const index = (y * width + x) * 4;
-        const r = rendered.data[index + 0];
-        const g = rendered.data[index + 1];
-        const b = rendered.data[index + 2];
-        const char = '@'
+function ascii() {
+    let rendered = render();
 
-        output.push(`\x1b[38;2;${r};${g};${b}m${char}\x1b[0m`);
+    let output = [];
+    i = slowi;
+    slowi += 2;  // 1 2 5 or width works well
+
+    // clear
+    console.log('\x1B[H\x1B[2J');
+
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            const index = (y * width + x) * 4;
+            const r = rendered.data[index + 0];
+            const g = rendered.data[index + 1];
+            const b = rendered.data[index + 2];
+            // const char = '@'
+            const char = ref[i++ % ref.length];
+
+            output.push(`\x1b[38;2;${r};${g};${b}m${char}\x1b[0m`);
+        }
+        output.push('\n')
     }
-    output.push('\n')
+
+    console.log(output.join(''))
 }
 
-console.log(output.join(''))
+ascii();
+
+if (typeof process !== 'undefined') {
+    // run with
+    // `bun run test --loop` or
+    // `node test --loop`
+    if (process.argv[2] === '--loop') {
+        setInterval(ascii, 20)
+    }
+}

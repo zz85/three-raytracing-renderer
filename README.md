@@ -20,9 +20,9 @@ One reason why I recently wanted to use RaytracingRenderer over SoftwareRenderer
 - `RaytracingRendererWorkers` - the changes I added to allow [Web Workers](https://github.com/mrdoob/three.js/pull/7671) to speed up rendering (To be added)
 
 ## Usage
-![terminal-test](screenshots/terminal-test.png)
+![browser-test](https://github.com/zz85/three-raytracing-renderer/raw/main/screenshots/browser-test.png)
 
-![browser-test](screenshots/browser-test.png)
+![terminal-test](https://github.com/zz85/three-raytracing-renderer/raw/main/screenshots/terminal-test.png)
 
 
 ## Other renderers
