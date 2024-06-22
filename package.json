@@ -1,6 +1,6 @@
 {
   "name": "three-raytracing-renderer",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "headless, pure js raytracing renderer drop in for three.js",
   "main": "index.js",
   "type": "module",
